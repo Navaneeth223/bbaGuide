@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BBA Guide — Your Complete Roadmap</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f5f5f0;
+    color: #1a1a1a;
+    line-height: 1.6;
+  }
+
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 4rem;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2d6a4f 100%);
+    color: white;
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  .hero-emoji { font-size: 3rem; margin-bottom: 0.75rem; }
+  .hero h1 { font-size: 1.75rem; font-weight: 800; margin-bottom: 0.5rem; }
+  .hero p { font-size: 1rem; opacity: 0.88; max-width: 520px; margin: 0 auto; }
+  .profile-pill {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 999px;
+    padding: 6px 18px;
+    font-size: 0.88rem;
+    margin-top: 1rem;
+    font-weight: 500;
+  }
+
+  /* SECTION LABEL */
+  .sec-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #888;
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 8px;
+    border-bottom: 1.5px solid #e0e0e0;
+  }
+
+  /* CARDS */
+  .card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border: 1.5px solid #e8e8e8;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .card.green { border-left: 5px solid #2d6a4f; }
+  .card.blue  { border-left: 5px solid #1e3a5f; }
+  .card.amber { border-left: 5px solid #d97706; }
+  .card.red   { border-left: 5px solid #dc2626; }
+
+  .card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.4rem;
+  }
+  .card-body {
+    font-size: 0.92rem;
+    color: #444;
+    line-height: 1.75;
+  }
+
+  /* BADGE */
+  .badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 8px;
+  }
+  .bg-green  { background: #d1fae5; color: #065f46; }
+  .bg-blue   { background: #dbeafe; color: #1e40af; }
+  .bg-amber  { background: #fef3c7; color: #92400e; }
+  .bg-red    { background: #fee2e2; color: #991b1b; }
+  .bg-purple { background: #ede9fe; color: #5b21b6; }
+
+  /* GRID */
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.75rem; }
+
+  /* STAT BOX */
+  .stat {
+    background: #f8f8f5;
+    border: 1.5px solid #e8e8e8;
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+  }
+  .stat-label { font-size: 0.75rem; color: #888; margin-bottom: 4px; font-weight: 500; }
+  .stat-val { font-size: 1.35rem; font-weight: 700; color: #1a1a1a; }
+
+  /* STEPS */
+  .step-list { list-style: none; padding: 0; }
+  .step-list li {
+    display: flex;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+    align-items: flex-start;
+  }
+  .step-list li:last-child { border-bottom: none; }
+  .step-num {
+    min-width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #1e3a5f;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-text { font-size: 0.92rem; color: #333; line-height: 1.7; }
+  .step-text strong { color: #1a1a1a; }
+
+  /* HIGHLIGHT BOX */
+  .callout {
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  .callout.green  { background: #d1fae5; border-left: 4px solid #2d6a4f; color: #064e3b; }
+  .callout.amber  { background: #fef3c7; border-left: 4px solid #d97706; color: #78350f; }
+  .callout.blue   { background: #dbeafe; border-left: 4px solid #1e3a5f; color: #1e3a5f; }
+  .callout.purple { background: #ede9fe; border-left: 4px solid #7c3aed; color: #4c1d95; }
+
+  /* CAREER PATH VISUAL */
+  .path {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0.75rem 0;
+  }
+  .path-box {
+    background: #1e3a5f;
+    color: white;
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-align: center;
+  }
+  .path-box.light { background: #e8f4f8; color: #1e3a5f; border: 1.5px solid #1e3a5f; }
+  .arrow { font-size: 1.2rem; color: #888; font-weight: bold; }
+
+  /* TABLE */
+  .tbl { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .tbl th { background: #1e3a5f; color: white; padding: 10px 14px; text-align: left; font-weight: 600; }
+  .tbl td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; color: #333; vertical-align: top; }
+  .tbl tr:nth-child(even) td { background: #fafafa; }
+  .tbl tr:last-child td { border-bottom: none; }
+
+  /* URGENT BOX */
+  .urgent {
+    background: #dc2626;
+    color: white;
+    border-radius: 14px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+  .urgent strong { font-weight: 700; }
+
+  /* DIVIDER */
+  hr { border: none; border-top: 1.5px solid #e8e8e8; margin: 2rem 0; }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    font-size: 0.82rem;
+    color: #aaa;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e8e8e8;
+  }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 1.4rem; }
+    .path-box { font-size: 0.75rem; padding: 6px 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-emoji">🎓</div>
+    <h1>Your BBA Complete Guide</h1>
+    <p>Everything you need to know about BBA — in simple words. What it is, what you'll study, what job you'll get, which college to join, how much it costs, and what to do next.</p>
+    <div class="profile-pill">✅ Plus 2 Commerce · 74% · Taliparamba, Kannur · No Maths needed</div>
+  </div>
+
+  <!-- WHAT IS BBA -->
+  <div class="sec-label">📚 First — What is BBA? (Very Simple Explanation)</div>
+
+  <div class="card green">
+    <span class="badge bg-green">Start Here</span>
+    <div class="card-title">BBA = Bachelor of Business Administration</div>
+    <div class="card-body">
+      <strong>Think of it like this:</strong><br><br>
+      Imagine you want to run a business one day — a shop, a company, or even your own startup. 
+      BBA is the course that teaches you <strong>HOW to run that business</strong>.<br><br>
+      You will learn things like:
+      <ul style="margin-top:8px; padding-left:18px; line-height:2">
+        <li>How to <strong>manage people</strong> (HR — Human Resources)</li>
+        <li>How to <strong>sell products</strong> (Marketing)</li>
+        <li>How to <strong>handle money</strong> (Finance)</li>
+        <li>How to <strong>run a company's daily work</strong> (Operations)</li>
+        <li>How businesses work in the <strong>real world</strong> (Business Law, Economics)</li>
+      </ul>
+      <br>
+      <strong>Duration:</strong> 3 years (6 semesters) &nbsp;|&nbsp; <strong>Maths needed?</strong> No ❌ &nbsp;|&nbsp; <strong>Based on:</strong> Your 12th marks (no entrance exam in most Kerala colleges)
+    </div>
+  </div>
+
+  <div class="callout green">
+    <strong>🌟 Why BBA is the RIGHT choice for you:</strong><br>
+    You passed Plus 2 Commerce → BBA directly continues from where your 12th left off. Same subjects you already know (Business Studies, Economics, Accounts) — but now deeper and more practical. Zero maths stress. 100% relevant to real-world jobs.
+  </div>
+
+  <!-- SUBJECTS YOU WILL STUDY -->
+  <div class="sec-label">📖 What will you study in BBA? (Year by Year)</div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="badge bg-blue">Year 1</span>
+      <div class="card-title">Foundation Year</div>
+      <div class="card-body">
+        Business Communication<br>
+        Principles of Management<br>
+        Financial Accounting<br>
+        Business Economics<br>
+        Computer Applications<br>
+        Organizational Behaviour
+      </div>
+    </div>
+    <div class="card">
+      <span class="badge bg-blue">Year 2</span>
+      <div class="card-title">Core Skills Year</div>
+      <div class="card-body">
+        Marketing Management<br>
+        Human Resource Management<br>
+        Financial Management<br>
+        Business Law<br>
+        Research Methodology<br>
+        Entrepreneurship Development
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <span class="badge bg-purple">Year 3 (Final)</span>
+    <div class="card-title">Specialisation + Internship Year</div>
+    <div class="card-body">
+      Strategic Management &nbsp;|&nbsp; International Business &nbsp;|&nbsp; Project Work<br>
+      <strong>Internship</strong> — you go work in a real company for 2–3 months (this is the most valuable part!)<br><br>
+      <strong>Specialisation choices (pick one):</strong> Finance · Marketing · Human Resources · Digital Marketing · International Business · Operations
+    </div>
+  </div>
+
+  <!-- ADD-ON COURSES — THE MAIN QUESTION -->
+  <div class="sec-label">🎯 Your Main Question — "Will BBA be enough? Or do I need to waste time on extra courses after?"</div>
+
+  <div class="callout amber">
+    <strong>Great question. Here is the honest answer:</strong><br>
+    BBA alone gives you a degree. But BBA + one good add-on skill = a <strong>very strong career</strong>. The good news? These add-ons are NOT 6-month waste-of-time courses. They are <strong>done DURING BBA itself</strong> (no extra time after). Most Kerala colleges offer them as part of the course already.
+  </div>
+
+  <div class="card green">
+    <span class="badge bg-green">Do DURING BBA — No Extra Time Needed</span>
+    <div class="card-title">Add-On Courses You Can Do Alongside BBA</div>
+    <div class="card-body">
+      <table class="tbl" style="margin-top:8px">
+        <tr>
+          <th>Course</th>
+          <th>What it is</th>
+          <th>Time</th>
+          <th>Future Use</th>
+        </tr>
+        <tr>
+          <td><strong>ASAP Kerala</strong><br><span style="font-size:0.8rem;color:#888">Additional Skill Acquisition Programme</span></td>
+          <td>Communication, IT, Spoken English, Soft Skills. Free programme by Kerala Govt. Available inside your BBA college itself.</td>
+          <td>Done during 1st & 2nd year. No extra time.</td>
+          <td>Makes your resume stronger. Helps in interviews. Every employer notices it.</td>
+        </tr>
+        <tr>
+          <td><strong>Digital Marketing Certificate</strong><br><span style="font-size:0.8rem;color:#888">Google / HubSpot (Free Online)</span></td>
+          <td>How to promote products online — social media, Google ads, email marketing. Done on your phone/laptop.</td>
+          <td>2–4 hours/week. Free. Anytime during BBA.</td>
+          <td>One of the MOST demanded skills right now. Salary: ₹3–8 LPA even as a fresher.</td>
+        </tr>
+        <tr>
+          <td><strong>Tally / Accounting Software</strong></td>
+          <td>India's most used business accounting software. Basic to learn, huge demand.</td>
+          <td>3–6 months course. Can do in 2nd year.</td>
+          <td>Finance/accounts jobs in any company. Banks love this.</td>
+        </tr>
+        <tr>
+          <td><strong>MS Office / Excel</strong></td>
+          <td>Word, Excel, PowerPoint. Every office in India uses this.</td>
+          <td>1–2 months. Free through YouTube/Google.</td>
+          <td>Every single job in the world uses Excel. Non-negotiable skill.</td>
+        </tr>
+        <tr>
+          <td><strong>CA Foundation</strong><br><span style="font-size:0.8rem;color:#888">(Only if interested in Finance)</span></td>
+          <td>Chartered Accountancy — first level exam. Can register during BBA 1st year itself with ICAI.</td>
+          <td>Study during BBA. No extra year needed.</td>
+          <td>If she clears CA — highest paying finance career. CA salary: ₹7–25 LPA.</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="callout purple">
+    <strong>💡 Key Point for You:</strong> You do NOT need to do a separate 6-month course after BBA just to get a job. If you pick one specialisation (like Digital Marketing or Finance) during BBA and learn one software skill alongside — you graduate with everything ready. The 3 years of BBA IS the preparation.
+  </div>
+
+  <!-- CAREER AFTER BBA -->
+  <div class="sec-label">💼 Career After BBA — What Jobs? What Salary?</div>
+
+  <div class="callout green">
+    <strong>Simple truth:</strong> After BBA you have <strong>two paths</strong> — either go get a job directly, or do MBA first for bigger jobs. Both are excellent. You decide based on what you want.
+  </div>
+
+  <!-- PATH VISUAL -->
+  <div class="card">
+    <div class="card-title">Your Career Roadmap After BBA</div>
+    <div style="margin-top:12px">
+      <div class="path">
+        <div class="path-box">Plus 2<br>Commerce<br>✅ (You are here)</div>
+        <div class="arrow">→</div>
+        <div class="path-box">BBA<br>3 Years</div>
+        <div class="arrow">→</div>
+        <div class="path-box light">Option A:<br>Direct Job<br>₹3–6 LPA</div>
+        <div class="arrow">→</div>
+        <div class="path-box light">2–3 yrs<br>Experience</div>
+        <div class="arrow">→</div>
+        <div class="path-box">Senior Role<br>₹8–15 LPA</div>
+      </div>
+      <div class="path" style="margin-top:10px">
+        <div class="path-box" style="background:#f0f0f0;color:#1a1a1a;min-width:80px">BBA Done</div>
+        <div class="arrow">→</div>
+        <div class="path-box light">Option B:<br>MBA (2 yrs)</div>
+        <div class="arrow">→</div>
+        <div class="path-box">Manager Level<br>₹8–20 LPA</div>
+        <div class="arrow">→</div>
+        <div class="path-box">Director /<br>CEO Level</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-label">👩‍💼 Specific Jobs After BBA — What You Can Become</div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="badge bg-green">After BBA — Direct Jobs</span>
+      <div class="card-body">
+        <ul style="padding-left:16px; line-height:2.1">
+          <li><strong>Marketing Executive</strong> — ₹3–5 LPA</li>
+          <li><strong>HR Executive</strong> — ₹2.5–4.5 LPA</li>
+          <li><strong>Sales Manager</strong> — ₹3–6 LPA</li>
+          <li><strong>Business Development Executive</strong> — ₹3–6 LPA</li>
+          <li><strong>Digital Marketing Specialist</strong> — ₹3–8 LPA</li>
+          <li><strong>Bank Jobs (IBPS/SBI PO)</strong> — ₹4–6 LPA</li>
+          <li><strong>Financial Analyst</strong> — ₹3.5–6 LPA</li>
+          <li><strong>Operations Manager</strong> — ₹3–5 LPA</li>
+          <li><strong>Own Business / Startup</strong> — Unlimited 🚀</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <span class="badge bg-purple">After BBA + MBA — Senior Jobs</span>
+      <div class="card-body">
+        <ul style="padding-left:16px; line-height:2.1">
+          <li><strong>Brand Manager</strong> — ₹8–15 LPA</li>
+          <li><strong>HR Manager</strong> — ₹8–18 LPA</li>
+          <li><strong>Finance Manager</strong> — ₹10–20 LPA</li>
+          <li><strong>Management Consultant</strong> — ₹11+ LPA</li>
+          <li><strong>Investment Banking</strong> — ₹10–25 LPA</li>
+          <li><strong>Product Manager</strong> — ₹10–25 LPA</li>
+          <li><strong>Director / VP in MNC</strong> — ₹20 LPA+</li>
+        </ul>
+        <div style="margin-top:10px;font-size:0.82rem;color:#888">MBA NOT mandatory — but helps reach top faster</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout blue">
+    <strong>Companies that hire BBA graduates:</strong> HDFC Bank · ICICI Bank · Amazon · Reliance Industries · KPMG · Wipro · Deloitte · Tata Group · Infosys (non-tech roles) · Flipkart · Swiggy · Zomato · Any company in India's private sector. <strong>Kerala PSC & government bank exams</strong> also open for BBA graduates.
+  </div>
+
+  <hr>
+
+  <!-- KERALA COLLEGES -->
+  <div class="sec-label">🏫 Best BBA Colleges in Kerala — Kannur & Calicut Region</div>
+
+  <div class="urgent">
+    ⚠️ <strong>URGENT — Register TODAY or Tomorrow!</strong><br>
+    Kannur University CAP closes around <strong>June 12, 2026</strong>.<br>
+    Calicut University CAP closes around <strong>June 10–12, 2026</strong>.<br>
+    Website: <strong>admission.kannuruniversity.ac.in</strong> — Go register NOW. Takes 20 minutes.
+  </div>
+
+  <table class="tbl" style="margin-bottom:1rem">
+    <tr>
+      <th>College Name</th>
+      <th>Location</th>
+      <th>BBA Fees (Total 3 yrs)</th>
+      <th>Type</th>
+      <th>Why Choose?</th>
+    </tr>
+    <tr>
+      <td><strong>Govt. Brennen College</strong></td>
+      <td>Thalassery (30 min from Taliparamba)</td>
+      <td>~₹10,000–₹20,000</td>
+      <td><span class="badge bg-green">Govt</span></td>
+      <td>Most prestigious govt college in Kannur region. Oldest. High competition for seats but worth trying. Under Kannur University.</td>
+    </tr>
+    <tr>
+      <td><strong>Taliparamba Arts & Science College</strong></td>
+      <td>Taliparamba (your town!)</td>
+      <td>~₹20,000 total</td>
+      <td><span class="badge bg-amber">Private</span></td>
+      <td>Literally in your area. Zero travel needed. BBA available. Under Kannur University. Best for minimum cost of living.</td>
+    </tr>
+    <tr>
+      <td><strong>Nirmalagiri College</strong></td>
+      <td>Koothuparamba (~25 min)</td>
+      <td>~₹30,000–₹50,000</td>
+      <td><span class="badge bg-blue">Aided</span></td>
+      <td>One of the top-rated colleges in Kannur district. Strong reputation. BCom + BBA available. Under Kannur University.</td>
+    </tr>
+    <tr>
+      <td><strong>Sir Syed College</strong></td>
+      <td>Taliparamba</td>
+      <td>~₹30,000–₹60,000</td>
+      <td><span class="badge bg-blue">Aided</span></td>
+      <td>Very close to home. Good management faculty. BBA available. Under Kannur University.</td>
+    </tr>
+    <tr>
+      <td><strong>Chinmaya Arts & Science College for Women</strong></td>
+      <td>Kannur</td>
+      <td>~₹40,000–₹70,000</td>
+      <td><span class="badge bg-blue">Aided</span></td>
+      <td>Women-only college. Safe and supportive environment. BBA offered. Under Kannur University.</td>
+    </tr>
+    <tr>
+      <td><strong>St. Joseph's College, Devagiri</strong></td>
+      <td>Kozhikode (~1.5 hrs)</td>
+      <td>~₹30,000–₹80,000</td>
+      <td><span class="badge bg-blue">Aided</span></td>
+      <td>One of Kerala's finest aided colleges. NIRF top 74 nationally. Excellent faculty. Under Calicut University. Hostel available.</td>
+    </tr>
+    <tr>
+      <td><strong>Farook College</strong></td>
+      <td>Kozhikode</td>
+      <td>~₹15,000–₹30,000</td>
+      <td><span class="badge bg-green">Govt Aided</span></td>
+      <td>Top-tier govt aided college. Very affordable. Strong academics. Under Calicut University.</td>
+    </tr>
+  </table>
+
+  <div class="callout amber">
+    <strong>How to register (Kannur University):</strong><br>
+    1. Go to <strong>admission.kannuruniversity.ac.in</strong><br>
+    2. Click "Register" → Fill name, DOB, email, phone<br>
+    3. Enter your Plus 2 marks<br>
+    4. Fill your <strong>college preference list</strong> (list ALL colleges you want, in order of priority — top choice first)<br>
+    5. Pay registration fee ~₹500 online<br>
+    6. Done! Wait for trial allotment, then final allotment.
+  </div>
+
+  <hr>
+
+  <!-- MANGALORE COLLEGES -->
+  <div class="sec-label">🏙️ Best BBA Colleges in Mangalore (120 km from Taliparamba)</div>
+
+  <div class="callout blue">
+    <strong>About Mangalore:</strong> Only ~3 hours from Taliparamba by bus/train. Major education city in Karnataka. Many Kerala students study here. Language is easy (Tulu + Kannada + Malayalam-friendly). Admission is DIRECT — you apply to the college directly, no CAP system like Kerala.
+  </div>
+
+  <table class="tbl" style="margin-bottom:1rem">
+    <tr>
+      <th>College Name</th>
+      <th>BBA Fees (Total)</th>
+      <th>Hostel</th>
+      <th>NAAC Grade</th>
+      <th>Why Choose?</th>
+    </tr>
+    <tr>
+      <td><strong>St. Aloysius (Deemed University)</strong></td>
+      <td>₹2.1L – ₹3.15L<br><span style="font-size:0.8rem;color:#888">₹70,000–₹1L per year</span></td>
+      <td>₹75,000/year<br>(food+room)</td>
+      <td><span class="badge bg-green">A++ 🏆</span></td>
+      <td>India's ONLY NAAC A++ college in coastal Karnataka. Founded 1880. NIRF #73 nationally. Best reputation in Mangalore. Great placements. Apply online at staloysius.edu.in. Minimum 74% needed — she just qualifies!</td>
+    </tr>
+    <tr>
+      <td><strong>SDM College of Business Management</strong></td>
+      <td>₹40,000–₹80,000/year<br><span style="font-size:0.8rem;color:#888">~₹1.5L–₹2L total</span></td>
+      <td>Available nearby</td>
+      <td><span class="badge bg-blue">A (3.15)</span></td>
+      <td>Best BBA college in Mangalore. Managed by Dharmasthala Trust (very reputed). AICTE approved. Strong MBA pipeline. Admissions OPEN NOW — prospectus from college office. Visit: sdm.ac.in</td>
+    </tr>
+    <tr>
+      <td><strong>Govinda Dasa College</strong></td>
+      <td>₹20,000–₹50,000/year</td>
+      <td>PG rooms nearby</td>
+      <td><span class="badge bg-amber">B</span></td>
+      <td>Most affordable in Mangalore. Private aided college, 1967 established. Good for budget students. BCom + BBA. Affiliated Mangalore University. Easy admission.</td>
+    </tr>
+    <tr>
+      <td><strong>Pompei College</strong></td>
+      <td>₹25,000–₹45,000/year</td>
+      <td>Available</td>
+      <td><span class="badge bg-blue">B+</span></td>
+      <td>Christian aided college. Affordable. BCom + BBA. Good campus life. Under Mangalore University.</td>
+    </tr>
+    <tr>
+      <td><strong>Karavali College</strong></td>
+      <td>₹45,000–₹60,000/year</td>
+      <td>Available</td>
+      <td><span class="badge bg-amber">B+</span></td>
+      <td>Good for management. BBA fees moderate. Modern campus. Under Mangalore University.</td>
+    </tr>
+    <tr>
+      <td><strong>Govt. First Grade College, Mangalore</strong></td>
+      <td>₹5,000–₹15,000/year<br><span style="font-size:0.8rem;color:#888">Cheapest option</span></td>
+      <td>Limited</td>
+      <td><span class="badge bg-green">Govt</span></td>
+      <td>Karnataka government college. Absolutely cheapest fees in Mangalore. SSP Karnataka scholarship covers tuition for eligible students. Basic but valid Mangalore University degree.</td>
+    </tr>
+  </table>
+
+  <div class="callout amber">
+    <strong>Important about Mangalore costs:</strong> Add hostel + food to college fees.<br>
+    Hostel in Mangalore: ₹60,000–₹80,000/year (food + room included in most). PG rooms: ₹4,000–₹7,000/month.<br>
+    Total yearly cost in Mangalore = College fees + ₹70,000–₹90,000 living expenses.<br>
+    <strong>Cheapest full package:</strong> Govt College + shared PG room = ~₹1L/year. <br>
+    <strong>Premium package:</strong> St. Aloysius + hostel = ~₹1.75L–2L/year.
+  </div>
+
+  <hr>
+
+  <!-- KERALA VS MANGALORE COMPARISON -->
+  <div class="sec-label">⚖️ Kerala vs Mangalore — Simple Comparison</div>
+
+  <div class="grid-2">
+    <div class="card green">
+      <div class="card-title">🌴 Stay in Kerala (Kannur)</div>
+      <div class="card-body">
+        <ul style="padding-left:16px; line-height:2">
+          <li>✅ Fees as low as ₹10,000–₹50,000 for 3 years</li>
+          <li>✅ Live at home — zero extra living cost</li>
+          <li>✅ E-Grantz scholarship — can make it FREE</li>
+          <li>✅ Familiar language, family support</li>
+          <li>✅ Good for govt job preparation (PSC, Bank PO)</li>
+          <li>❌ Smaller placement network than Mangalore</li>
+          <li>❌ Less exposure to corporate environment</li>
+        </ul>
+        <br><strong>Best if:</strong> Budget is a concern, or she wants to prepare for government jobs.
+      </div>
+    </div>
+    <div class="card blue">
+      <div class="card-title">🏙️ Go to Mangalore</div>
+      <div class="card-body">
+        <ul style="padding-left:16px; line-height:2">
+          <li>✅ Better college quality (especially St. Aloysius)</li>
+          <li>✅ More corporate placements & industry exposure</li>
+          <li>✅ Independence — builds confidence</li>
+          <li>✅ Only 3 hours from home — can visit easily</li>
+          <li>✅ Strong alumni network in banking/finance</li>
+          <li>❌ Higher cost: ~₹1L–2L per year total</li>
+          <li>❌ Kerala scholarships (E-Grantz) won't work here</li>
+        </ul>
+        <br><strong>Best if:</strong> Family can manage ₹1–1.5L/year and she wants better career exposure.
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- DOCUMENTS NEEDED -->
+  <div class="sec-label">📋 Documents You Need (Keep These Ready)</div>
+
+  <div class="grid-3">
+    <div class="stat"><div class="stat-label">Identity</div><div class="stat-val" style="font-size:1rem">Aadhaar Card</div></div>
+    <div class="stat"><div class="stat-label">Qualification</div><div class="stat-val" style="font-size:1rem">Plus 2 Mark Sheet</div></div>
+    <div class="stat"><div class="stat-label">School Certificate</div><div class="stat-val" style="font-size:1rem">SSLC Certificate</div></div>
+    <div class="stat"><div class="stat-label">Transfer</div><div class="stat-val" style="font-size:1rem">TC from School</div></div>
+    <div class="stat"><div class="stat-label">Category</div><div class="stat-val" style="font-size:1rem">Caste Certificate<br><span style="font-size:0.75rem;font-weight:400">(if applicable)</span></div></div>
+    <div class="stat"><div class="stat-label">Finance</div><div class="stat-val" style="font-size:1rem">Income Certificate</div></div>
+    <div class="stat"><div class="stat-label">Bank</div><div class="stat-val" style="font-size:1rem">Bank Passbook<br><span style="font-size:0.75rem;font-weight:400">(Aadhaar linked)</span></div></div>
+    <div class="stat"><div class="stat-label">Photo</div><div class="stat-val" style="font-size:1rem">4 Passport Photos<br>+ Scanned Signature</div></div>
+    <div class="stat"><div class="stat-label">Migration</div><div class="stat-val" style="font-size:1rem">Migration Certificate<br><span style="font-size:0.75rem;font-weight:400">(for Mangalore colleges)</span></div></div>
+  </div>
+
+  <hr>
+
+  <!-- SCHOLARSHIPS -->
+  <div class="sec-label">💰 Scholarships — How to Study for Almost FREE</div>
+
+  <div class="card green">
+    <span class="badge bg-green">Apply after admission — very important</span>
+    <div class="card-title">Scholarships Available</div>
+    <div class="card-body">
+      <table class="tbl" style="margin-top:8px">
+        <tr>
+          <th>Scholarship</th>
+          <th>Who can apply?</th>
+          <th>Benefit</th>
+          <th>Where to apply?</th>
+        </tr>
+        <tr>
+          <td><strong>E-Grantz (Kerala)</strong></td>
+          <td>SC / ST / OBC / OEC students in Kerala colleges</td>
+          <td>Full tuition fee refund + monthly stipend</td>
+          <td>egrantz.kerala.gov.in or Akshaya Centre</td>
+        </tr>
+        <tr>
+          <td><strong>NSP — National Scholarship</strong></td>
+          <td>Family income below ₹2.5L/year</td>
+          <td>₹10,000–₹25,000/year</td>
+          <td>scholarships.gov.in (opens Aug every year)</td>
+        </tr>
+        <tr>
+          <td><strong>Pragati (AICTE)</strong></td>
+          <td>Girl students in degree courses</td>
+          <td>₹50,000/year (tuition + incidentals)</td>
+          <td>aicte-pragati-saksham-gov.in</td>
+        </tr>
+        <tr>
+          <td><strong>KPCR Scholarship (Kerala)</strong></td>
+          <td>Forward community, family income &lt; ₹1L/year</td>
+          <td>Tuition fee support</td>
+          <td>Apply through college</td>
+        </tr>
+        <tr>
+          <td><strong>SSP Karnataka</strong></td>
+          <td>SC/ST/OBC students in Karnataka (Mangalore) colleges</td>
+          <td>Full tuition fee reimbursement</td>
+          <td>ssp.postmatric.karnataka.gov.in</td>
+        </tr>
+        <tr>
+          <td><strong>ASAP Kerala (Free Skill Training)</strong></td>
+          <td>All Kerala college students</td>
+          <td>Free spoken English, IT, soft skills training inside college</td>
+          <td>Through your college automatically</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- NEXT STEPS ACTION PLAN -->
+  <div class="sec-label">🗓️ Exact Steps to Take — Starting From Today</div>
+
+  <div class="urgent">
+    ⏰ <strong>TODAY is June 4, 2026. Kannur University CAP closes June 12. You have 8 days.</strong>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Your Action Plan — Step by Step</div>
+    <ul class="step-list" style="margin-top:12px">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>TODAY — Register on Kannur University CAP</strong><br>
+          Go to: <strong>admission.kannuruniversity.ac.in</strong><br>
+          Click "Register" → Enter Plus 2 marks, personal details, email, phone → Pay ₹500 fee online → Get application number. Takes 20 minutes. Do this today itself.
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>TODAY/TOMORROW — Also register on Calicut University CAP</strong><br>
+          Go to: <strong>admission.uoc.ac.in</strong><br>
+          Same process. Covers more colleges in Kozhikode area. Registering on both universities costs only ₹500–₹1,000 and doubles your options. Closes June 10–12.
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Fill your college preference list carefully</strong><br>
+          Put the best college you want FIRST. Then second choice, third choice... fill ALL available slots (up to 20). Don't leave slots empty. The system will give you the best college available based on your marks + your list. <strong>Put Brennen College, Nirmalagiri, Sir Syed, Taliparamba Arts & Science in your list.</strong>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-text">
+          <strong>If interested in Mangalore — apply directly to college</strong><br>
+          For <strong>SDM College:</strong> Go to the college office in person OR visit sdm.ac.in. Admissions open now. Fill application form + submit documents.<br>
+          For <strong>St. Aloysius:</strong> Apply online at staloysius.edu.in. Check if BBA seats are still open for June 2026 intake.
+        </div>
+      </li>
+      <li>
+        <div class="step-num">5</div>
+        <div class="step-text">
+          <strong>Wait for Kerala allotment (late June 2026)</strong><br>
+          Trial allotment comes first — shows where you might get. Final allotment next. When allotment comes, pay fee online within 3–5 days and download allotment memo. Do NOT miss this deadline or you lose the seat.
+        </div>
+      </li>
+      <li>
+        <div class="step-num">6</div>
+        <div class="step-text">
+          <strong>Report to college (July 2026)</strong><br>
+          Carry all original documents + allotment memo + photos. Classes usually start July first week.
+        </div>
+      </li>
+      <li>
+        <div class="step-num">7</div>
+        <div class="step-text">
+          <strong>After admission — Apply for E-Grantz / NSP scholarship</strong><br>
+          Visit egrantz.kerala.gov.in or nearest Akshaya Centre within 1 month of joining college. Also register on scholarships.gov.in (NSP opens August). Keep income certificate and Aadhaar ready.
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <hr>
+
+  <!-- FINAL RECOMMENDATION -->
+  <div class="sec-label">⭐ My Final Recommendation for You</div>
+
+  <div class="card green">
+    <span class="badge bg-green">Based on Your Situation</span>
+    <div class="card-title">Best Plan for Your Sister — Clear and Simple</div>
+    <div class="card-body" style="line-height:2.2">
+      <strong>Course:</strong> BBA (specialise in Marketing or Finance in Year 3)<br>
+      <strong>Add-ons during BBA:</strong> ASAP Kerala (free) + Google Digital Marketing Certificate (free online)<br>
+      <strong>First choice college:</strong> Try for Govt Brennen College or Nirmalagiri College (Kannur University)<br>
+      <strong>Backup in Kerala:</strong> Taliparamba Arts & Science College — right in your town<br>
+      <strong>Mangalore option:</strong> SDM College (best BBA) or St. Aloysius (best overall) — if family budget allows ~₹1.5L/year<br>
+      <strong>After BBA:</strong> Either get a job directly in marketing/finance OR appear for MBA entrance (CAT/CMAT)<br>
+      <strong>Registration:</strong> Do it TODAY at admission.kannuruniversity.ac.in before June 12<br><br>
+      <div class="callout green" style="margin:0">
+        <strong>🌟 Bottom line:</strong> BBA is not a waste of time. It is a full, proper, respected degree that opens the door to the entire corporate world — banking, marketing, HR, management, business, and even your own company. Three years of BBA with one skill add-on = strong career, good salary, and the foundation to grow as high as you want. 💪
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Prepared for: Your Sister's BBA Admission 2026 &nbsp;|&nbsp; Taliparamba, Kannur, Kerala<br>
+    Important websites: admission.kannuruniversity.ac.in · admission.uoc.ac.in · sdm.ac.in · staloysius.edu.in · egrantz.kerala.gov.in · scholarships.gov.in
+  </div>
+
+</div>
+</body>
+</html>
